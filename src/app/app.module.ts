@@ -12,11 +12,14 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { HomeComponent } from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ProductService} from './shared/product.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FilterPipe } from './pipe/filter.pipe';
+import {HttpModule} from '@angular/http';
 
 const routeConfig: Routes = [
-  {path:'', component:HomeComponent},
-  {path:'product/:productId', component:ProductDetailComponent}
-]
+  {path: '', component: HomeComponent},
+  {path: 'product/:productId', component: ProductDetailComponent}
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,11 +30,14 @@ const routeConfig: Routes = [
     ProductComponent,
     StarsComponent,
     ProductDetailComponent,
-    HomeComponent
+    HomeComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routeConfig)
+    FormsModule,
+    RouterModule.forRoot(routeConfig),
+    ReactiveFormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
